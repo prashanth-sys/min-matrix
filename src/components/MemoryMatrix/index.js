@@ -33,7 +33,7 @@ class MemoryMatrix extends Component {
 
     setTimeout(() => {
       this.setState({highlightedIndices: []})
-    }, 3000)
+    }, 6000)
     this.setState({highlightedIndices: slicedArray})
 
     console.log('New grid buttons:', slicedArray)
@@ -71,11 +71,15 @@ class MemoryMatrix extends Component {
 
   nextLevel = () => {
     this.setState(prevState => ({
-      level: prevState.leve + 1,
+      level: prevState.level + 1,
       gridSize: prevState.gridSize + 1,
       clickedIndices: [],
       results: false,
     }))
+  }
+
+  onClickStartButton = () => {
+    this.setState({results: true})
   }
 
   render() {
@@ -130,6 +134,8 @@ class MemoryMatrix extends Component {
                     classNames += ' highlight'
                   } else if (clickedIndex === index) {
                     classNames += ' clicked'
+                  } else {
+                    classNames += ' not-found'
                   }
 
                   return (
@@ -201,7 +207,11 @@ class MemoryMatrix extends Component {
               <h1 className="Congratulations">Congratulations!</h1>
               <h1 className="level-heading">You have reached level {level}</h1>
               <Link to="/matrix/game" className="link">
-                <button className="start-button" type="button">
+                <button
+                  className="start-button"
+                  type="button"
+                  onClick={this.onClickStartButton}
+                >
                   Start playing
                 </button>
               </Link>

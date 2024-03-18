@@ -31,11 +31,12 @@
   height: 358px;
   flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .button {
-  width: 100px;
+  min-width: 100px;
   margin: 5px;
-  height: 100px;
+  min-height: 100px;
   background-color: #cbd5e1;
   border-width: 0px;
 }
